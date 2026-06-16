@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álbum de Fotos Interativo</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <h2>Meu Álbum de Fotos</h2>
+
+    <label for="seletorArquivo" style="background-color: #052443; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+        Carregar Imagem
+    </label>
+
+    <input type="file" id="seletorArquivo" multiple accept="image/*" style="display: none;">
+
+    <div id="galeria"></div>
+
+    <div id="modal">
+    <button id="btnRemover">Remover Imagem</button>
+    <img id="modalImg" src="" alt="">
+    <p id="modalDesc" class="descricao">Descrição da imagem</p>
+</div>
+
+    <script src="albuconfig.js"></script>
+
+</body>
+</html>
