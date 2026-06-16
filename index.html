@@ -8,17 +8,22 @@
 </head>
 <body>
 
-    <!-- CABEÇALHO -->
+    <!-- CABEÇALHO & MENU -->
     <header>
         <div class="logo">Code&<span>Craft</span> Lab</div>
-        <a href="#contato" class="btn-contato-topo">Fale Conosco</a>
+        <nav class="menu-navegacao">
+            <a href="#inicio">Início</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#modelos">Modelos/Ramos</a>
+            <a href="#contato" class="btn-contato-topo">Fale Conosco</a>
+        </nav>
     </header>
 
     <!-- RELEVÂNCIA / HOME -->
-    <section class="hero">
+    <section id="inicio" class="hero">
         <h1>Transformamos ideias em <br><span>plataformas digitais</span> que vendem.</h1>
         <p>Criamos sites, catálogos e landing pages exclusivas para destacar seu comércio local ou sua carreira profissional.</p>
-        <a href="#servicos" class="btn-principal">Conhecer Soluções</a>
+        <a href="#modelos" class="btn-principal">Ver Modelos por Ramo</a>
     </section>
 
     <!-- NOSSOS SERVIÇOS -->
@@ -40,34 +45,77 @@
         </div>
     </section>
 
-    <!-- PROJETOS / VITRINE -->
-    <section class="vitrine">
-        <h2>Nosso Laboratório (Cases)</h2>
-        <p>Veja um exemplo real de sistema desenvolvido pelo nosso laboratório:</p>
-        <div class="projeto-exemplo">
-            <h3>Álbum & Catálogo Interativo Dinâmico</h3>
-            <p>Sistema com upload de arquivos em tempo real, gerenciador de descrições e módulo integrado de remoção de itens.</p>
-            <span class="tag-status">Disponível para Licenciamento</span>
+    <!-- MODELOS POR RAMO DE ATIVIDADE -->
+    <section id="modelos" class="segmentos">
+        <h2>Modelos Segmentados</h2>
+        <p class="subtitulo-secao">Escolha o seu ramo de atividade e veja a solução ideal para o seu negócio:</p>
+        
+        <div class="grid-segmentos">
+            <!-- Ramo 1 -->
+            <div class="card-ramo">
+                <div class="ramo-icone">🍕</div>
+                <h3>Restaurantes e Delivery</h3>
+                <p>Cardápio digital dinâmico onde o cliente seleciona os pratos, calcula a taxa de entrega e envia o pedido pronto no WhatsApp.</p>
+                <span class="tag-modelo">Módulo Álbum/Catálogo</span>
+            </div>
+
+            <!-- Ramo 2 -->
+            <div class="card-ramo">
+                <div class="ramo-icone">🩺</div>
+                <h3>Saúde e Bem-Estar</h3>
+                <p>Landing page premium para Médicos, Dentistas e Psicólogos com apresentação de especialidades, convênios e botão de agendamento.</p>
+                <span class="tag-modelo">Página de Alta Conversão</span>
+            </div>
+
+            <!-- Ramo 3 -->
+            <div class="card-ramo">
+                <div class="ramo-icone">⚖️</div>
+                <h3>Advocacia e Consultoria</h3>
+                <p>Layout sóbrio e elegante focado em autoridade, com divisão de áreas de atuação e captação direta de leads qualificados.</p>
+                <span class="tag-modelo">Corporate Page</span>
+            </div>
+
+            <!-- Ramo 4 -->
+            <div class="card-ramo">
+                <div class="ramo-icone">💄</div>
+                <h3>Estética e Salões</h3>
+                <p>Galeria interativa para exibir fotos de "Antes e Depois", tabela de serviços visível e integração com sistemas de agendamento.</p>
+                <span class="tag-modelo">Módulo Galeria Dinâmica</span>
+            </div>
+
+            <!-- Ramo 5 -->
+            <div class="card-ramo">
+                <div class="ramo-icone">🛍️</div>
+                <h3>Lojas de Roupas e E-commerce</h3>
+                <p>Vitrine virtual completa baseada no nosso sistema de Álbum de Fotos com zoom, descrição detalhada e carrinho simplificado.</p>
+                <span class="tag-modelo">E-commerce Express</span>
+            </div>
+
+            <!-- Ramo 6 -->
+            <div class="card-ramo">
+                <div class="ramo-icone">🏠</div>
+                <h3>Imobiliárias e Corretores</h3>
+                <p>Catálogo de imóveis segmentado por bairros, tamanho e preço, facilitando o filtro do cliente antes do contato final.</p>
+                <span class="tag-modelo">Módulo Catálogo Avançado</span>
+            </div>
         </div>
     </section>
 
     <!-- QUEM SOMOS -->
-<section class="quem-somos" style="padding: 80px 8%; background-color: #030f1b; text-align: center;">
-    <h2 style="font-size: 32px; margin-bottom: 20px;">Por Trás do Laboratório</h2>
-    <p style="color: #cbd5e0; max-width: 800px; margin: 0 auto 30px auto; line-height: 1.8; font-size: 16px;">
-        A <strong>Code&Craft Lab</strong> nasceu da união entre a engenharia lógica de software e o design focado em conversão. Nós não acreditamos em sites genéricos que servem apenas como "cartão de visitas" virtual. 
-    </p>
-    <p style="color: #cbd5e0; max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 16px;">
-        Nosso foco é desenvolver ferramentas exclusivas, códigos otimizados e layouts de alto impacto que transformam cliques em faturamento real. Seja escalando o delivery e catálogo de um comércio local ou posicionando um profissional liberal no topo do mercado, nós blindamos a sua presença digital contra falhas e preparamos seu negócio para o próximo nível.
-    </p>
-</section>
-
+    <section class="quem-somos">
+        <h2>Por Trás do Laboratório</h2>
+        <p>
+            A <strong>Code&Craft Lab</strong> nasceu da união entre a engenharia lógica de software e o design focado em conversão. Nós não acreditamos em sites genéricos que servem apenas como "cartão de visitas" virtual. 
+        </p>
+        <p>
+            Nosso foco é desenvolver ferramentas exclusivas, códigos otimizados e layouts de alto impacto que transformam cliques em faturamento real. Seja escalando o delivery e catálogo de um comércio local ou posicionando um profissional liberal no topo do mercado, nós blindamos a sua presença digital contra falhas e preparamos seu negócio para o próximo nível.
+        </p>
+    </section>
 
     <!-- CHAMADA PARA AÇÃO FINAL -->
     <section id="contato" class="cta-final">
         <h2>Bora Tirar o Seu Projeto do Papel?</h2>
         <p>Entre em contato agora mesmo. Nossa equipe está pronta para desenhar a solução perfeita para o seu nicho.</p>
-        <!-- Substitua o link abaixo pelo link real do seu WhatsApp -->
         <a href="https://wa.me" target="_blank" class="btn-whatsapp">Chamar no WhatsApp</a>
     </section>
 
