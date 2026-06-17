@@ -1,87 +1,169 @@
+<!-- PARTE 1: Cabeçalho, Estilos (CSS) e Painel Admin -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelo Delivery | Code&Craft Lab</title>
-    <link rel="stylesheet" href="portfoliostyle.css">
+    <title>Modelo Delivery | Prin&code</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #030f1b; color: #ffffff; padding-bottom: 120px; }
         .cardapio-container { padding: 40px 8%; text-align: center; }
-        .grid-produtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-        .produto-card { background: #051628; border: 1px solid #0a2544; border-radius: 8px; padding: 20px; text-align: left; }
-        .produto-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; }
+        .grid-produtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .produto-card { background: #051628; border: 1px solid #0a2544; border-radius: 8px; padding: 20px; text-align: left; position: relative; transition: 0.3s; }
+        .produto-card:hover { border-color: #00ff88; }
+        .produto-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; background: #0a2544; display: block; }
         .produto-card h3 { margin: 15px 0 5px 0; color: #00ff88; }
-        .produto-card .preco { font-weight: bold; font-size: 18px; color: #ffffff; }
-        .btn-adicionar { background: #00ff88; color: #030f1b; border: none; padding: 10px; width: 100%; border-radius: 4px; font-weight: bold; margin-top: 15px; cursor: pointer; }
-        .barra-carrinho { position: fixed; bottom: 0; left: 0; width: 100%; background: #0a2544; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #00ff88; }
-        .btn-enviar-whats { background: #25d366; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: bold; }
+        .produto-card p { color: #a0aec0; font-size: 14px; margin-bottom: 15px; min-height: 40px; }
+        .produto-card .preco { font-weight: bold; font-size: 20px; color: #ffffff; }
+        .btn-adicionar { background: #00ff88; color: #030f1b; border: none; padding: 12px; width: 100%; border-radius: 4px; font-weight: bold; margin-top: 15px; cursor: pointer; transition: 0.2s; }
+        .btn-deletar-admin { background: #ff4d4d; color: white; border: none; padding: 5px 10px; border-radius: 4px; font-size: 12px; cursor: pointer; position: absolute; top: 10px; left: 10px; display: none; }
+        .barra-carrinho { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(10, 37, 68, 0.95); backdrop-filter: blur(10px); padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #00ff88; z-index: 2000; }
+        .btn-enviar-whats { background: #25d366; color: white; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: bold; transition: 0.2s; }
+        .admin-painel { position: fixed; top: 80px; right: 20px; background: #0a2544; border: 2px solid #00ff88; border-radius: 8px; padding: 20px; width: 320px; z-index: 2500; display: none; }
+        .admin-painel h4 { color: #00ff88; margin-bottom: 15px; border-bottom: 1px solid #10355e; padding-bottom: 5px; }
+        .admin-input { width: 100%; padding: 8px; margin-bottom: 10px; background: #030f1b; border: 1px solid #10355e; color: white; border-radius: 4px; font-size: 14px; }
+        .btn-admin-salvar { background: #00ff88; color: #030f1b; border: none; padding: 10px; width: 100%; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .btn-toggle-admin { position: fixed; top: 20px; right: 20px; background: #10355e; color: #00ff88; border: 1px solid #00ff88; padding: 10px 15px; border-radius: 4px; font-weight: bold; cursor: pointer; z-index: 2600; }
     </style>
 </head>
 <body>
+    <button class="btn-toggle-admin" onclick="toggleAdminPainel()">⚙️ Modo Editor</button>
 
-    <!-- AVISO DE DEMONSTRAÇÃO -->
+    <div class="admin-painel" id="painelAdmin">
+        <h4>Configurações Gerais</h4>
+        <input type="text" id="editNome" class="admin-input" placeholder="Nome do Restaurante">
+        <input type="text" id="editEndereco" class="admin-input" placeholder="Endereço">
+        <h4>Adicionar Novo Prato</h4>
+        <input type="text" id="prodNome" class="admin-input" placeholder="Nome do Prato">
+        <input type="text" id="prodDesc" class="admin-input" placeholder="Descrição">
+        <input type="number" id="prodPreco" class="admin-input" placeholder="Preço (Ex: 39.90)" step="0.01">
+        <input type="text" id="prodImg" class="admin-input" placeholder="Link da Imagem (URL)">
+        <button class="btn-admin-salvar" onclick="salvarConfiguracoes()">Aplicar Alterações</button>
+    </div>
+
+<!-- PARTE 2: Estrutura da Página (HTML do Corpo) -->
     <div style="background: #00ff88; color: #030f1b; text-align: center; padding: 8px; font-weight: bold; font-size: 14px;">
-        PAINEL DE DEMONSTRAÇÃO - MODELO EXCLUSIVO CODE&CRAFT LAB
+        PAINEL DINÂMICO INTERATIVO - VERSÃO PRIN&CODE 2.0
     </div>
 
     <section class="cardapio-container">
         <h2>🍕 Pizzaria & Hamburgueria Demo</h2>
-        <p>Clique nos produtos para simular o pedido do cliente final.</p>
-
-        <div class="grid-produtos">
-            <!-- Produto 1 -->
-            <div class="produto-card">
-                <img src="https://unsplash.com" alt="Pizza">
-                <h3>Pizza Suprema</h3>
-                <p>Molho artesanal, muçarela, pepperoni e borda recheada.</p>
-                <div class="preco">R$ 49,90</div>
-                <button class="btn-adicionar" onclick="adicionarAoCarrinho('Pizza Suprema', 49.90)">Adicionar ao Pedido</button>
-            </div>
-
-            <!-- Produto 2 -->
-            <div class="produto-card">
-                <img src="https://unsplash.com" alt="Burger">
-                <h3>Craft Burger Double</h3>
-                <p>Dois blends de 150g, muito queijo cheddar e bacon crocante.</p>
-                <div class="preco">R$ 34,90</div>
-                <button class="btn-adicionar" onclick="adicionarAoCarrinho('Craft Burger Double', 34.90)">Adicionar ao Pedido</button>
-            </div>
-        </div>
+        <p style="color: #a0aec0; margin-top: 5px;">Rua dos Devs, 404 - Code City</p>
+        <div class="grid-produtos"></div>
     </section>
 
-    <!-- BARRA DO CARRINHO ACUMULATIVA -->
     <div class="barra-carrinho">
         <div>
-            <span style="color: #a0aec0;">Seu Pedido:</span>
-            <div id="itens-pedido" style="font-size: 14px; margin-top: 5px; color: #cbd5e0;">Nenhum item selecionado</div>
+            <span style="color: #a0aec0; font-weight: bold;">Seu Pedido:</span>
+            <div id="itens-pedido" style="font-size: 14px; margin-top: 5px; color: #cbd5e0; max-width: 500px;">Nenhum item selecionado</div>
         </div>
         <div style="text-align: right;">
-            <div style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Total: <span id="total-pedido">R$ 0,00</span></div>
+            <div style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Total: <span id="total-pedido" style="color: #00ff88;">R$ 0,00</span></div>
             <a href="#" id="link-whatsapp" class="btn-enviar-whats" onclick="enviarPedido(event)">Enviar via WhatsApp</a>
         </div>
     </div>
 
+<!-- PARTE 3: Lógica do Sistema (JavaScript) -->
     <script>
-        let carrinho = [];
-        let total = 0;
+        const IMAGEM_PADRAO = "https://unsplash.com";
+        const dadosPadrao = {
+            nome: "🍕 Pizzaria & Hamburgueria Demo",
+            endereco: "Rua dos Devs, 404 - Code City",
+            produtos: [
+                { id: 1, nome: "Pizza Suprema", desc: "Molho artesanal, muçarela, pepperoni.", preco: 49.90, img: "https://unsplash.com" },
+                { id: 2, nome: "Craft Burger Double", desc: "Dois blends de 150g, muito queijo cheddar.", preco: 34.90, img: "https://unsplash.com" }
+            ]
+        };
+
+        let appDados = JSON.parse(localStorage.getItem('prin_code_dados')) || dadosPadrao;
+        let carrinho = []; let total = 0;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderizarMenu();
+            document.getElementById('editNome').value = appDados.nome;
+            document.getElementById('editEndereco').value = appDados.endereco;
+        });
+
+        function renderizarMenu() {
+            document.querySelector(".cardapio-container h2").innerText = appDados.nome;
+            document.querySelector(".cardapio-container p").innerText = appDados.endereco;
+            const espaco = document.querySelector('.grid-produtos');
+            espaco.innerHTML = "";
+            appDados.produtos.forEach(prod => {
+                const urlImg = (prod.img && prod.img.trim() !== "" && prod.img !== "https://unsplash.com") ? prod.img : IMAGEM_PADRAO;
+                espaco.innerHTML += `
+                    <div class="produto-card">
+                        <button class="btn-deletar-admin" onclick="excluirProduto(${prod.id})">❌ Excluir</button>
+                        <img src="${urlImg}" alt="${prod.nome}" onerror="this.src='${IMAGEM_PADRAO}'">
+                        <h3>${prod.nome}</h3><p>${prod.desc}</p>
+                        <div class="preco">R$ ${prod.preco.toFixed(2).replace('.', ',')}</div>
+                        <button class="btn-adicionar" onclick="adicionarAoCarrinho('${prod.nome}', ${prod.preco})">Adicionar</button>
+                    </div>`;
+            });
+        }
 
         function adicionarAoCarrinho(nome, preco) {
-            carrinho.push(nome);
-            total += preco;
+            carrinho.push(nome); total += preco;
             document.getElementById('itens-pedido').innerText = carrinho.join(', ');
             document.getElementById('total-pedido').innerText = 'R$ ' + total.toFixed(2).replace('.', ',');
         }
 
         function enviarPedido(event) {
-            if(carrinho.length === 0) {
-                alert('Adicione pelo menos um item para testar!');
-                event.preventDefault();
-                return;
+            if (carrinho.length === 0) { alert('Adicione itens!'); event.preventDefault(); return; }
+            let msg = `*Novo Pedido - ${appDados.nome}*\n\n*Itens:*\n${carrinho.map(i => `- ${i}`).join('\n')}\n\n*Total:* R$ ${total.toFixed(2).replace('.', ',')}`;
+            window.open(`https://wa.me{encodeURIComponent(msg)}`, '_blank');
+        }
+
+         function toggleAdminPainel() {
+            const p = document.getElementById('painelAdmin');
+            const btns = document.querySelectorAll('.btn-deletar-admin');
+            
+            // Força a checagem real se está visível ou não
+            if (p.style.display === "block") {
+                p.style.display = "none";
+                btns.forEach(b => b.style.display = "none");
+            } else {
+                p.style.display = "block";
+                btns.forEach(b => b.style.display = "block");
             }
-            // Simula o texto formatado indo para o WhatsApp do estabelecimento
-            let texto = encodeURIComponent('Olá! Gostaria de fazer o seguinte pedido de teste:\n\n' + carrinho.join('\n') + '\n\nTotal: R$ ' + total.toFixed(2));
-            window.open('https://wa.me' + texto, '_blank');
+        }
+
+        function salvarConfiguracoes() {
+            appDados.nome = document.getElementById('editNome').value || appDados.nome;
+            appDados.endereco = document.getElementById('editEndereco').value || appDados.endereco;
+            const pNome = document.getElementById('prodNome').value;
+            const pDesc = document.getElementById('prodDesc').value;
+            const pPreco = parseFloat(document.getElementById('prodPreco').value);
+            const pImg = document.getElementById('prodImg').value;
+
+            if (pNome && pPreco) {
+                appDados.produtos.push({
+                    id: Date.now(), nome: pNome, desc: pDesc || "Sem descrição.", preco: pPreco,
+                    img: (pImg && pImg.trim() !== "" && pImg !== "https://unsplash.com") ? pImg : IMAGEM_PADRAO
+                });
+                document.getElementById('prodNome').value = ""; document.getElementById('prodDesc').value = "";
+                document.getElementById('prodPreco').value = ""; document.getElementById('prodImg').value = "";
+            }
+            localStorage.setItem('prin_code_dados', JSON.stringify(appDados));
+            renderizarMenu(); toggleAdminPainel(); alert('Salvo!');
+        }
+
+         function excluirProduto(id) {
+            // 1. Filtra e remove o produto do banco de dados
+            appDados.produtos = appDados.produtos.filter(p => p.id !== id);
+            
+            // 2. Grava a nova lista no navegador
+            localStorage.setItem('prin_code_dados', JSON.stringify(appDados));
+            
+            // 3. Atualiza a tela com a lista nova
+            renderizarMenu(); 
+            
+            // 4. Mantém os botões "X" visíveis na tela já que o painel continua aberto
+            const btns = document.querySelectorAll('.btn-deletar-admin');
+            btns.forEach(b => b.style.display = "block");
         }
     </script>
 </body>
 </html>
+
