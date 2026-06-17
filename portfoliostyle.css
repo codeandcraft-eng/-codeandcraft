@@ -22,19 +22,43 @@ span {
 }
 
 /* CABEÇALHO & MENU */
-/* CABEÇALHO & MENU - VERSÃO HAMBÚRGUER */
+/* Atualização para o Header Geral - Efeito Vidro Fosco no Topo */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 8%;
-  background-color: #051628;
+  background-color: rgba(5, 22, 40, 0.85); /* Fundo com opacidade */
+  backdrop-filter: blur(12px); /* Efeito blur no fundo do desktop */
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid #0a2544;
   position: sticky;
   top: 0;
   z-index: 2000;
   width: 100%;
 }
+
+/* RESPONSIVIDADE (Telas até 768px) */
+@media (max-width: 768px) {
+  /* ... mantenha a regra do .menu-hamburguer ativa como estava ... */
+
+  .menu-navegacao {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    /* Efeito de Vidro Fosco (Blur) no menu aberto do celular */
+    background-color: rgba(5, 22, 40, 0.92); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    width: 100%;
+    height: calc(100vh - 70px);
+    gap: 35px;
+    padding-top: 40px;
+    transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Transição mais suave */
+    border-top: 1px solid #0a2544;
+  }
+
 
 header .logo {
   font-size: 24px;
