@@ -42,11 +42,27 @@ header .logo {
   font-weight: bold;
 }
 
-.logo {
-    font-size: 1.5rem;
+/* Container que junta a imagem e o texto da logo */
+.logo-container {
+    display: flex;
+    align-items: center; /* Alinha o texto e a imagem horizontalmente no meio */
+    gap: 10px;           /* Distância entre a imagem do logo e o texto */
+}
+
+/* Controla o tamanho exato da imagem na barra */
+.logo-img {
+    height: 40px;        /* Define uma altura compacta elegante para a nav */
+    width: auto;         /* Mantém a proporção correta para não distorcer */
+    object-fit: contain;
+}
+
+/* Mantém a estilização do seu texto da logo atual */
+.logo-texto {
+    font-size: 1.3rem;
     font-weight: bold;
     white-space: nowrap;
 }
+
 
 .menu-navegacao {
   display: flex;
