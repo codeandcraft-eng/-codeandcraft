@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório de Modelos | Code&Craft Lab</title>
+    <link rel="stylesheet" href="portfoliostyle.css">
+    <style>
+        .barra-topo-demo { background: #00ff88; color: #030f1b; text-align: center; padding: 10px; font-weight: bold; font-size: 14px; position: sticky; top: 0; z-index: 3000; }
+        .tabs-modelos { display: flex; justify-content: center; gap: 10px; padding: 20px; background: #051628; border-bottom: 1px solid #0a2544; overflow-x: auto; }
+        .tab-btn { background: #0a2544; color: #ffffff; border: 1px solid #10355e; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; white-space: nowrap; transition: 0.3s; }
+        .tab-btn.ativo, .tab-btn:hover { background: #00ff88; color: #030f1b; border-color: #00ff88; }
+        .conteudo-modelo { display: none; padding: 40px 8%; max-width: 1200px; margin: 0 auto; }
+        .conteudo-modelo.ativo { display: block; }
+        
+        /* Estilos específicos das demos */
+        .preview-box { background: #051628; border: 1px solid #0a2544; border-radius: 8px; padding: 30px; margin-top: 20px; }
+        .grid-demo { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .card-demo { background: #0a2544; border: 1px solid #10355e; border-radius: 6px; padding: 15px; text-align: center; }
+        .card-demo img { width: 100%; height: 160px; object-fit: cover; border-radius: 4px; }
+        .btn-demo { background: #00ff88; color: #030f1b; border: none; padding: 10px; width: 100%; border-radius: 4px; font-weight: bold; margin-top: 10px; cursor: pointer; }
+        .input-demo { width: 100%; padding: 12px; margin: 10px 0; background: #030f1b; border: 1px solid #10355e; color: white; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <div class="barra-topo-demo">
+        🧪 AMBIENTE DE TESTES - CLIQUE NOS MENUS ABAIXO PARA ALTERNAR ENTRE OS MODELOS
+    </div>
+
+    <!-- SELETOR DE MODELOS -->
+    <div class="tabs-modelos">
+        <button class="tab-btn ativo" onclick="mudarModelo('delivery')">🍕 Delivery</button>
+        <button class="tab-btn" onclick="mudarModelo('saude')">🩺 Saúde</button>
+        <button class="tab-btn" onclick="mudarModelo('advocacia')">⚖️ Advocacia</button>
+        <button class="tab-btn" onclick="mudarModelo('estetica')">💄 Estética</button>
+        <button class="tab-btn" onclick="mudarModelo('roupas')">🛍️ Lojas/Roupas</button>
+        <button class="tab-btn" onclick="mudarModelo('imobiliaria')">🏠 Imobiliária</button>
+    </div>
+
+    <!-- 1. MODELO DELIVERY -->
+    <div id="delivery" class="conteudo-modelo ativo">
+        <h2>Cardápio Digital Automático</h2>
+        <p>Simule a experiência do cliente escolhendo o prato e enviando o pedido formatado.</p>
+        <div class="grid-demo">
+            <div class="card-demo">
+                <img src="image/pizza.jpg" alt="Pizza">
+                <h3>Pizza Suprema</h3>
+                <p style="color:#cbd5e0; font-size:14px; margin: 5px 0;">R$ 49,90</p>
+                <button class="btn-demo" onclick="alert('Item adicionado! Total atualizado na simulação do cliente.')">Adicionar Pedido</button>
+            </div>
+            <div class="card-demo">
+                <img src="image/burger.jpg" alt="Burger">
+                <h3>Craft Burger Double</h3>
+                <p style="color:#cbd5e0; font-size:14px; margin: 5px 0;">R$ 34,90</p>
+                <button class="btn-demo" onclick="alert('Item adicionado! Total atualizado na simulação do cliente.')">Adicionar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. MODELO SAÚDE -->
+    <div id="saude" class="conteudo-modelo">
+        <h2>Agendamento Clínico Particular</h2>
+        <p>Página focada em conversão e autoridade médica com marcação de consulta rápida.</p>
+        <div class="preview-box" style="max-width: 500px; margin: 20px auto;">
+            <h3>Agendar Consulta de Teste</h3>
+            <input type="text" class="input-demo" placeholder="Seu Nome Completo">
+            <input type="date" class="input-demo">
+            <select class="input-demo">
+                <option>Selecione a Especialidade</option>
+                <option>Consulta Geral</option>
+                <option>Retorno</option>
+            </select>
+            <button class="btn-demo" onclick="alert('Simulação de agendamento enviada! O médico recebe uma notificação instantânea.')">Solicitar Horário</button>
+        </div>
+    </div>
+
+    <!-- 3. MODELO ADVOCACIA -->
+    <div id="advocacia" class="conteudo-modelo">
+        <h2>Consultoria Jurídica & Corporativa</h2>
+        <p>Design minimalista focado em passar segurança e filtrar potenciais clientes importantes.</p>
+        <div class="preview-box">
+            <h3 style="color: #00ff88; margin-bottom: 10px;">Áreas de Atuação Demonstrativas</h3>
+            <ul style="text-align: left; line-height: 2; margin-bottom: 20px; padding-left: 20px;">
+                <li>Direito Empresarial e Contratos</li>
+                <li>Defesa do Consumidor Avançada</li>
+                <li>Planejamento Tributário para Comércios</li>
+            </ul>
+            <button class="btn-demo" style="max-width: 300px;" onclick="alert('Gatilho de chat iniciado. O cliente entra direto em contato com o advogado de plantão.')">Falar com Especialista</button>
+        </div>
+    </div>
+
+    <!-- 4. MODELO ESTÉTICA -->
+    <div id="estetica" class="conteudo-modelo">
+        <h2>Espaço Estética & Galeria Antes/Depois</h2>
+        <p>O cliente consegue ver o catálogo de procedimentos e os resultados reais do salão.</p>
+        <div class="grid-demo">
+            <div class="card-demo">
+                <img src="image/estetica.jpg" alt="Procedimento">
+                <h3>Limpeza de Pele Deep</h3>
+                <button class="btn-demo" onclick="alert('Abre o modal expandido com a foto em alta definição do Antes e Depois.')">Ver Resultados reais</button>
+            </div>
+            <div class="card-demo">
+                <img src="image/estetica2.jpg" alt="Cabelo">
+                <h3>Mega Hair Premium</h3>
+                <button class="btn-demo" onclick="alert('Abre o modal expandido com a foto em alta definição do Antes e Depois.')">Ver Resultados reais</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. MODELO ROUPAS -->
+    <div id="roupas" class="conteudo-modelo">
+        <h2>Vitrine Virtual Express</h2>
+        <p>Ideal para lojas de roupas que gerenciam estoque pelo Instagram e querem um checkout limpo.</p>
+        <div class="grid-demo">
+            <div class="card-demo">
+                <img src="image/moda.jpg" alt="Moda">
+                <h3>Jaqueta Streetwear Black</h3>
+                <p style="color:#cbd5e0; font-size:14px; margin: 5px 0;">R$ 189,90</p>
+                <button class="btn-demo" onclick="alert('Produto guardado na sacola de compras virtual.')">Comprar Agora</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. MODELO IMOBILIÁRIA -->
+    <div id="imobiliaria" class="conteudo-modelo">
+        <h2>Catálogo de Imóveis & Filtro Inteligente</h2>
+        <p>O cliente localiza os imóveis disponíveis e agenda visitas filtrando por interesse.</p>
+        <div class="grid-demo">
+            <div class="card-demo" style="text-align: left;">
+                <img src="image/casa.jpg" alt="Casa">
+                <h3 style="margin-top:10px;">Casa Residencial - 3 Quartos</h3>
+                <p style="color:#a0aec0; font-size:13px;">Zona Leste, São Paulo</p>
+                <button class="btn-demo" onclick="alert('Dispara os detalhes completos do imóvel e contato do corretor responsável.')">Ver Detalhes do Imóvel</button>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; padding: 20px;">
+        <a href="index.html" style="color: #00ff88; text-decoration: underline; font-weight: bold;">← Voltar para a Página Principal</a>
+    </div>
+
+    <script>
+    // FUNÇÃO: Alterna as abas manualmente ao clicar
+    function mudarModelo(idModelo, elementoClicado) {
+        // Remove a classe ativa de todas as abas e de todas as seções
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('ativo'));
+        document.querySelectorAll('.conteudo-modelo').forEach(conteudo => conteudo.classList.remove('ativo'));
+        
+        // Ativa a seção correspondente
+        document.getElementById(idModelo).classList.add('ativo');
+
+        // Se a função foi chamada por um clique em botão real, ativa o botão
+        if (elementoClicado) {
+            elementoClicado.classList.add('ativo');
+        } else {
+            // Caso contrário (vindo de um link externo), procura o botão certo pelo atributo onclick
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if (btn.getAttribute('onclick').includes(idModelo)) {
+                    btn.classList.add('ativo');
+                }
+            });
+        }
+    }
+
+    // INTELIGÊNCIA DE REDIRECIONAMENTO AUTOMÁTICO
+    window.addEventListener('DOMContentLoaded', () => {
+        // Pega a hashtag da URL (ex: #saude)
+        const hash = window.location.hash;
+        
+        if (hash) {
+            // Remove o símbolo '#' para ter apenas o texto puro (ex: 'saude')
+            const idModeloAlvo = hash.replace('#', '');
+            
+            // Verifica se o ID realmente existe na nossa página antes de tentar abrir
+            if (document.getElementById(idModeloAlvo)) {
+                mudarModelo(idModeloAlvo, null);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
