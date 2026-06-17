@@ -1,8 +1,4 @@
 /* CONFIGURAÇÕES GERAIS */
-html, body {
-    max-width: 100vw;
-    overflow-x: hidden;
-}
 * {
   margin: 0;
   padding: 0;
@@ -25,11 +21,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 5%;
-  width: 100%;  
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  gap: 15px;
+  padding: 20px 8%;
   background-color: #051628;
   border-bottom: 1px solid #0a2544;
   position: sticky;
@@ -42,28 +34,6 @@ header .logo {
   font-weight: bold;
 }
 
-/* Container que junta a imagem e o texto da logo */
-.logo-container {
-    display: flex;
-    align-items: center; /* Alinha o texto e a imagem horizontalmente no meio */
-    gap: 10px;           /* Distância entre a imagem do logo e o texto */
-}
-
-/* Controla o tamanho exato da imagem na barra */
-.logo-img {
-    height: 40px;        /* Define uma altura compacta elegante para a nav */
-    width: auto;         /* Mantém a proporção correta para não distorcer */
-    object-fit: contain;
-}
-
-/* Mantém a estilização do seu texto da logo atual */
-.logo-texto {
-    font-size: 1.3rem;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-
 .menu-navegacao {
   display: flex;
   align-items: center;
@@ -71,11 +41,10 @@ header .logo {
 }
 
 .menu-navegacao a {
-  color: inherit;
+  color: #ffffff;
   text-decoration: none;
-  font-size: 1rem;
-  /* transition: 0.3s; */
-  white-space: nowrap;
+  font-size: 16px;
+  transition: 0.3s;
 }
 
 .menu-navegacao a:hover {
@@ -86,7 +55,7 @@ header .logo {
   text-decoration: none;
   color: #00ff88 !important;
   border: 1px solid #00ff88;
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: 4px;
   font-weight: bold;
   transition: 0.3s;
@@ -96,21 +65,6 @@ header .logo {
   background-color: #00ff88 !important;
   color: #030f1b !important;
 }
-
-@media (max-width: 600px) {
-    header {
-        flex-direction: column; /* Empilha a Logo em cima e o Menu embaixo */
-        text-align: center;
-    }
-
-    .menu-navegacao {
-        justify-content: center; /* Centraliza os links no meio da tela */
-        gap: 15px;
-        width: 100%;
-    }
-    
-    .menu-navegacao a {
-        font-size: 0.9rem; /* Diminui um pouquinho a letra no celular para caber melhor */
 
 /* HERO SECTION */
 .hero {
