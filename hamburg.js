@@ -1,42 +1,31 @@
-alert("O JavaScript está funcionando!");
-const CodeCraftApp = {
-    elements: {
-        header: document.querySelector("header"),
-        cardsServicos: document.querySelectorAll(".card"),
-        cardsRamos: document.querySelectorAll(".card-ramo"),
-        btnWhats: document.querySelector(".btn-whatsapp"),
-        btnHero: document.querySelector(".btn-principal"),
-        // Novos elementos para o menu hambúrguer:
-        btnHamburguer: document.querySelector(".menu-hamburguer"),
-        navMenu: document.querySelector(".menu-navegacao"),
-        navLinks: document.querySelectorAll(".menu-navegacao a")
-    },
+// Garante que o código só roda depois que TODO o HTML foi carregado
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. Mapeia os elementos do menu
+    const btnHamburguer = document.querySelector(".menu-hamburguer");
+    const navMenu = document.querySelector(".menu-navegacao");
+    const navLinks = document.querySelectorAll(".menu-navegacao a");
 
-    init() {
-        this.addScrollEffect();
-        this.addIntersectionObserver();
-        this.setupAnalytics();
-        this.setupMobileMenu(); // Inicializa o menu mobile
-    },
-
-    // Controle do menu mobile
-    setupMobileMenu() {
-        if (!this.elements.btnHamburguer) return;
-
-        // Abre e fecha ao clicar no hambúrguer
-        this.elements.btnHamburguer.addEventListener("click", () => {
-            this.elements.btnHamburguer.classList.toggle("active");
-            this.elements.navMenu.classList.toggle("active");
+    // 2. Verifica se os elementos realmente existem na página
+    if (btnHamburguer && navMenu) {
+        
+        // Evento de clique para abrir/fechar o menu
+        btnHamburguer.addEventListener("click", () => {
+            btnHamburguer.classList.toggle("active");
+            navMenu.classList.toggle("active");
         });
 
-        // Fecha o menu automaticamente ao clicar em qualquer link (âncora)
-        this.elements.navLinks.forEach(link => {
+        // Fecha o menu automaticamente ao clicar em qualquer link
+        navLinks.forEach(link => {
             link.addEventListener("click", () => {
-                this.elements.btnHamburguer.classList.remove("active");
-                this.elements.navMenu.classList.remove("active");
+                btnHamburguer.classList.remove("active");
+                navMenu.classList.remove("active");
             });
         });
-    },
 
-    // ... (mantenha as outras funções addScrollEffect, addIntersectionObserver e setupAnalytics abaixo)
-};
+    } else {
+        // Se der erro, isso vai aparecer no Console do seu navegador (F12)
+        console.error("Erro: .menu-hamburguer ou .menu-navegacao não foram encontrados no HTML.");
+    }
+});
+
