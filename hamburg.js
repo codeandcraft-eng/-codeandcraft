@@ -1,3 +1,4 @@
+alert("O JavaScript está funcionando!");
 const CodeCraftApp = {
     elements: {
         header: document.querySelector("header"),
