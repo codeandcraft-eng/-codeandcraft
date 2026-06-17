@@ -34,6 +34,14 @@
         <h4>Configurações Gerais</h4>
         <input type="text" id="editNome" class="admin-input" placeholder="Nome do Restaurante">
         <input type="text" id="editEndereco" class="admin-input" placeholder="Endereço">
+                <h4>Configurações Gerais</h4>
+        <input type="text" id="editNome" class="admin-input" placeholder="Nome do Restaurante">
+        <input type="text" id="editEndereco" class="admin-input" placeholder="Endereço">
+        
+        <!-- NOVO CAMPO DE COR DA MARCA -->
+        <label style="font-size: 13px; color: #a0aec0; display: block; margin-bottom: 5px;">Cor Principal da Marca:</label>
+        <input type="color" id="editCor" class="admin-input" style="padding: 2px; height: 40px; cursor: pointer;">
+
         <h4>Adicionar Novo Prato</h4>
         <input type="text" id="prodNome" class="admin-input" placeholder="Nome do Prato">
         <input type="text" id="prodDesc" class="admin-input" placeholder="Descrição">
@@ -70,6 +78,7 @@
         const dadosPadrao = {
             nome: "🍕 Pizzaria & Hamburgueria Demo",
             endereco: "Rua dos Devs, 404 - Code City",
+            cor: "#00ff88",
             produtos: [
                 { id: 1, nome: "Pizza Suprema", desc: "Molho artesanal, muçarela, pepperoni.", preco: 49.90, img: "https://unsplash.com" },
                 { id: 2, nome: "Craft Burger Double", desc: "Dois blends de 150g, muito queijo cheddar.", preco: 34.90, img: "https://unsplash.com" }
@@ -83,6 +92,10 @@
             renderizarMenu();
             document.getElementById('editNome').value = appDados.nome;
             document.getElementById('editEndereco').value = appDados.endereco;
+            
+            // APLICA A COR SALVA NO SITE
+            document.documentElement.style.setProperty('--cor-principal', appDados.cor || '#00ff88');
+            document.getElementById('editCor').value = appDados.cor || '#00ff88';
         });
 
         function renderizarMenu() {
@@ -132,6 +145,11 @@
         function salvarConfiguracoes() {
             appDados.nome = document.getElementById('editNome').value || appDados.nome;
             appDados.endereco = document.getElementById('editEndereco').value || appDados.endereco;
+            
+            // PEGA A NOVA COR SELECIONADA
+            const novaCor = document.getElementById('editCor').value;
+            appDados.cor = novaCor;
+            document.documentElement.style.setProperty('--cor-principal', novaCor);
             const pNome = document.getElementById('prodNome').value;
             const pDesc = document.getElementById('prodDesc').value;
             const pPreco = parseFloat(document.getElementById('prodPreco').value);
