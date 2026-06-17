@@ -12,27 +12,6 @@ html, body {
   scroll-behavior: smooth;
 }
 
-        /* CONFIGURAÇÕES GERAIS COM CORES DINÂMICAS */
-        :root {
-            --cor-principal: #00ff88; /* Cor padrão que o admin pode mudar */
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background-color: #030f1b; color: #ffffff; padding-bottom: 120px; }
-        
-        /* Atualizando os pontos do CSS para usar a variável dinâmica */
-        .produto-card:hover { border-color: var(--cor-principal); }
-        .produto-card h3 { margin: 15px 0 5px 0; color: var(--cor-principal); }
-        .btn-adicionar { background: var(--cor-principal); color: #030f1b; border: none; padding: 12px; width: 100%; border-radius: 4px; font-weight: bold; margin-top: 15px; cursor: pointer; transition: 0.2s; }
-        .btn-adicionar:hover { filter: brightness(0.85); }
-        .barra-carrinho { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(10, 37, 68, 0.95); backdrop-filter: blur(10px); padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid var(--cor-principal); z-index: 2000; }
-        .barra-carrinho #total-pedido { color: var(--cor-principal) !important; }
-        .admin-painel { position: fixed; top: 80px; right: 20px; background: #0a2544; border: 2px solid var(--cor-principal); border-radius: 8px; padding: 20px; width: 320px; z-index: 2500; display: none; }
-        .admin-painel h4 { color: var(--cor-principal); margin-bottom: 15px; border-bottom: 1px solid #10355e; padding-bottom: 5px; }
-        .btn-admin-salvar { background: var(--cor-principal); color: #030f1b; border: none; padding: 10px; width: 100%; border-radius: 4px; font-weight: bold; cursor: pointer; }
-        .btn-toggle-admin { position: fixed; top: 20px; right: 20px; background: #10355e; color: var(--cor-principal); border: 1px solid var(--cor-principal); padding: 10px 15px; border-radius: 4px; font-weight: bold; cursor: pointer; z-index: 2600; }
-
-
 body {
   background-color: #030f1b;
   color: #ffffff;
