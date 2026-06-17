@@ -1,4 +1,9 @@
 /* CONFIGURAÇÕES GERAIS */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden; /* Corta qualquer elemento que queira estourar para o lado */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -17,6 +22,7 @@ span {
 }
 
 /* CABEÇALHO & MENU */
+/* CABEÇALHO & MENU - VERSÃO HAMBÚRGUER */
 header {
   display: flex;
   justify-content: space-between;
@@ -27,6 +33,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 2000;
+  width: 100%;
 }
 
 header .logo {
@@ -65,6 +72,66 @@ header .logo {
   background-color: #00ff88 !important;
   color: #030f1b !important;
 }
+
+/* Estilos do Botão Hambúrguer (Escondido no Desktop) */
+.menu-hamburguer {
+  display: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 6px;
+  padding: 5px;
+}
+
+.menu-hamburguer .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  transition: 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
+/* RESPONSIVIDADE (Telas até 768px) */
+@media (max-width: 768px) {
+  .menu-hamburguer {
+    display: flex; /* Mostra o botão no celular */
+  }
+
+  .menu-navegacao {
+    position: fixed;
+    top: 70px; /* Fica logo abaixo do header */
+    right: -100%; /* Começa escondido para fora da tela */
+    flex-direction: column;
+    background-color: #051628;
+    width: 100%;
+    height: calc(100vh - 70px);
+    gap: 35px;
+    padding-top: 40px;
+    transition: 0.3s ease-in-out;
+    border-top: 1px solid #0a2544;
+  }
+
+  /* Classe que o JS vai injetar para abrir o menu */
+  .menu-navegacao.active {
+    right: 0;
+  }
+
+  /* Animação do Hambúrguer virando um "X" */
+  .menu-hamburguer.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+    background-color: #00ff88;
+  }
+  .menu-hamburguer.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-hamburguer.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+    background-color: #00ff88;
+  }
+}
+
 
 /* HERO SECTION */
 .hero {
