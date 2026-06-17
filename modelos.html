@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo Delivery | Code&Craft Lab</title>
+    <link rel="stylesheet" href="portfoliostyle.css">
+    <style>
+        .cardapio-container { padding: 40px 8%; text-align: center; }
+        .grid-produtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .produto-card { background: #051628; border: 1px solid #0a2544; border-radius: 8px; padding: 20px; text-align: left; }
+        .produto-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; }
+        .produto-card h3 { margin: 15px 0 5px 0; color: #00ff88; }
+        .produto-card .preco { font-weight: bold; font-size: 18px; color: #ffffff; }
+        .btn-adicionar { background: #00ff88; color: #030f1b; border: none; padding: 10px; width: 100%; border-radius: 4px; font-weight: bold; margin-top: 15px; cursor: pointer; }
+        .barra-carrinho { position: fixed; bottom: 0; left: 0; width: 100%; background: #0a2544; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #00ff88; }
+        .btn-enviar-whats { background: #25d366; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
 
+    <!-- AVISO DE DEMONSTRAÇÃO -->
+    <div style="background: #00ff88; color: #030f1b; text-align: center; padding: 8px; font-weight: bold; font-size: 14px;">
+        PAINEL DE DEMONSTRAÇÃO - MODELO EXCLUSIVO CODE&CRAFT LAB
+    </div>
+
+    <section class="cardapio-container">
+        <h2>🍕 Pizzaria & Hamburgueria Demo</h2>
+        <p>Clique nos produtos para simular o pedido do cliente final.</p>
+
+        <div class="grid-produtos">
+            <!-- Produto 1 -->
+            <div class="produto-card">
+                <img src="https://unsplash.com" alt="Pizza">
+                <h3>Pizza Suprema</h3>
+                <p>Molho artesanal, muçarela, pepperoni e borda recheada.</p>
+                <div class="preco">R$ 49,90</div>
+                <button class="btn-adicionar" onclick="adicionarAoCarrinho('Pizza Suprema', 49.90)">Adicionar ao Pedido</button>
+            </div>
+
+            <!-- Produto 2 -->
+            <div class="produto-card">
+                <img src="https://unsplash.com" alt="Burger">
+                <h3>Craft Burger Double</h3>
+                <p>Dois blends de 150g, muito queijo cheddar e bacon crocante.</p>
+                <div class="preco">R$ 34,90</div>
+                <button class="btn-adicionar" onclick="adicionarAoCarrinho('Craft Burger Double', 34.90)">Adicionar ao Pedido</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- BARRA DO CARRINHO ACUMULATIVA -->
+    <div class="barra-carrinho">
+        <div>
+            <span style="color: #a0aec0;">Seu Pedido:</span>
+            <div id="itens-pedido" style="font-size: 14px; margin-top: 5px; color: #cbd5e0;">Nenhum item selecionado</div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Total: <span id="total-pedido">R$ 0,00</span></div>
+            <a href="#" id="link-whatsapp" class="btn-enviar-whats" onclick="enviarPedido(event)">Enviar via WhatsApp</a>
+        </div>
+    </div>
+
+    <script>
+        let carrinho = [];
+        let total = 0;
+
+        function adicionarAoCarrinho(nome, preco) {
+            carrinho.push(nome);
+            total += preco;
+            document.getElementById('itens-pedido').innerText = carrinho.join(', ');
+            document.getElementById('total-pedido').innerText = 'R$ ' + total.toFixed(2).replace('.', ',');
+        }
+
+        function enviarPedido(event) {
+            if(carrinho.length === 0) {
+                alert('Adicione pelo menos um item para testar!');
+                event.preventDefault();
+                return;
+            }
+            // Simula o texto formatado indo para o WhatsApp do estabelecimento
+            let texto = encodeURIComponent('Olá! Gostaria de fazer o seguinte pedido de teste:\n\n' + carrinho.join('\n') + '\n\nTotal: R$ ' + total.toFixed(2));
+            window.open('https://wa.me' + texto, '_blank');
+        }
+    </script>
+</body>
+</html>
